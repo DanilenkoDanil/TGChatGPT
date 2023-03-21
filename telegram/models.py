@@ -31,7 +31,7 @@ class Message(models.Model):
 class Setting(models.Model):
     tg_key = models.CharField(max_length=256)
     prompt = models.TextField()
-    chat_gpt_version = models.CharField(default='text-davinci-003')
+    chat_gpt_version = models.CharField(default='text-davinci-003', max_length=156)
     openai_organization = models.CharField(max_length=256)
     openai_api_key = models.CharField(max_length=256)
     trial_days = models.PositiveIntegerField(default=1)
