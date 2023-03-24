@@ -18,7 +18,7 @@ django.setup()
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token="1788531567:AAFI7SJ7K17zmCSaOR_qESyC1r_X3ktq8R4")
+bot = Bot(token=setting.tg_key)
 
 dp = Dispatcher(bot, storage=MemoryStorage())
 
