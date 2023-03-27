@@ -12,15 +12,10 @@ class User(models.Model):
         return self.username
 
 
-class Question(models.Model):
+class QuestionAnswer(models.Model):
     user = models.ForeignKey(User, models.CASCADE)
-    text = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
-
-
-class Answer(models.Model):
-    user = models.ForeignKey(User, models.CASCADE)
-    text = models.TextField()
+    question = models.TextField()
+    answer = models.TextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
 
 

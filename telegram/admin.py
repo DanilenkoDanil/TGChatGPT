@@ -1,5 +1,5 @@
 from django.contrib import admin
-from telegram.models import User, Setting, Answer, Question, Message
+from telegram.models import User, Setting, QuestionAnswer, Message
 
 
 @admin.register(User)
@@ -13,20 +13,12 @@ class SettingAdmin(admin.ModelAdmin):
     list_display = ('tg_key', 'prompt', 'trial_days', 'chat_gpt_version')
 
 
-@admin.register(Answer)
+@admin.register(QuestionAnswer)
 class SettingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'text', 'date')
+    list_display = ('user', 'date')
     search_fields = ('user',)
 
 
 @admin.register(Message)
 class SettingAdmin(admin.ModelAdmin):
     list_display = ('id', 'text')
-
-
-@admin.register(Question)
-class SettingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'text', 'date')
-    search_fields = ('user',)
-
-# Register your models here.
