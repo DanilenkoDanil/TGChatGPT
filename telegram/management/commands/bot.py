@@ -60,7 +60,7 @@ async def chat(message: types.Message):
             await message.answer('Ваша подписка окончена!')
         return
     if check_msg_exist(1):
-        error_mgs = Message.objects.get(id=1).text
+        error_mgs = Message.objects.get(id=2).text
     else:
         error_mgs = "Произошла ошибка при обработке вашего запроса"
     user = User.objects.get(tg_id=message.from_user.id)
