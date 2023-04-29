@@ -73,7 +73,9 @@ async def chat(message: types.Message):
             final_msg = message.text
         response = openai.ChatCompletion.create(
             model=setting.chat_gpt_version,
-            prompt=final_msg,
+            messages=[
+                {"role": "user", "content": final_msg}
+            ],
             max_tokens=2000
         )
         QuestionAnswer.objects.create(user=user, question=final_msg, answer=response.choices[0].text)
