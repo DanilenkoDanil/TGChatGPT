@@ -72,7 +72,7 @@ async def chat(message: types.Message):
         else:
             final_msg = message.text
         response = openai.ChatCompletion.create(
-            engine=setting.chat_gpt_version,
+            model=setting.chat_gpt_version,
             prompt=final_msg,
             max_tokens=2000
         )
