@@ -71,19 +71,22 @@ async def chat(message: types.Message):
                         user.last_msg + '\n' + 'Текущее сообщение: ' + message.text
         else:
             final_msg = message.text
+
         response = openai.ChatCompletion.create(
-            model=setting.chat_gpt_version,
-            messages=[
-                {"role": "user", "content": final_msg}
-            ],
-            max_tokens=2000
+              model='gpt-3.5-turbo',
+              messages=[
+                {'role': 'user', 'content': final_msg}
+              ],
+              temperature=0
         )
-        QuestionAnswer.objects.create(user=user, question=final_msg, answer=response.choices[0].text)
+        response = response.choices[0].message.content
+        QuestionAnswer.objects.create(user=user, question=final_msg, answer=response)
         user.last_msg = message.text
         user.save()
-        await message.answer(response.choices[0].text)
+        await message.answer(response)
 
     except Exception as e:
+        print('asdasdda')
         print(e)
         await message.answer(error_mgs)
 
